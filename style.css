@@ -1,0 +1,29 @@
+body {
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+}
+
+.header {
+  background-color: red;
+}
+
+#header-text {
+  margin: 0;
+}
+
+.main {
+  background-color: azure;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 750px;
+  height: 750px;
+}
