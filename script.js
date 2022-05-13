@@ -2,6 +2,10 @@ const tile = (mark, position) => {
  return {mark, position};
 }
 
+const player = (number) => {
+  return {number};
+}
+
 const gameboard = (() => {
   /*array of tiles on the gameboard will be referred to numerically like so:
   [0][1][2]
@@ -15,14 +19,21 @@ const gameboard = (() => {
   }
 
   const markTile = (e) => {
-    console.log(e.target);
     const position = e.target.getAttribute('id');
-    tilesArray[position].mark = 'x';
-    e.target.textContent = tilesArray[position].mark;
-    /* tilesArray[position].mark = mark; */
+    const currentPlayer = logicController.getCurrentPlayer();
+
+    if(currentPlayer === 1) {
+      tilesArray[position].mark = 'x';
+      e.target.textContent = 'x';
+    } else {
+      tilesArray[position].mark = 'o';
+      e.target.textContent = 'o';
+    }
+
+    logicController.changeTurn();
   }
 
-  return {tilesArray, markTile};
+  return {markTile};
 })();
 
 const displayController = (() => {
@@ -43,4 +54,26 @@ const displayController = (() => {
   return {createNewBoard};
 })();
 
-displayController.createNewBoard();
+const logicController = (() => {
+  const playerOne = player(1);
+  const playerTwo = player(2);
+  let currentPlayer;
+
+  const initializeGame = () => {
+    displayController.createNewBoard();
+    currentPlayer = 1;
+  }
+
+  const changeTurn = () => {
+    currentPlayer = (currentPlayer === 1) ? 2 : 1;
+  }
+
+  const getCurrentPlayer = () => {
+    return currentPlayer;
+  }
+
+  return {initializeGame, changeTurn, getCurrentPlayer};
+})();
+
+logicController.initializeGame();
+console.log(logicController.currentPlayer);
