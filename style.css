@@ -1,3 +1,9 @@
+:root {
+  --website-dark-grey: rgb(36, 36, 36);
+  --website-light-grey: rgb(44, 44 ,44);
+  --website-white: rgb(209, 209, 209);
+}
+
 body {
   height: 100vh;
   margin: 0;
@@ -6,15 +12,19 @@ body {
 }
 
 .header {
-  background-color: red;
+  background-color: var(--website-light-grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #header-text {
   margin: 0;
+  color: var(--website-white);
 }
 
 .main {
-  background-color: azure;
+  background-color: var(--website-dark-grey);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,4 +36,11 @@ body {
   grid-template-rows: 1fr 1fr 1fr;
   width: 750px;
   height: 750px;
+}
+
+.tile {
+  background-color: rgb(255, 255, 195);
+  color: var(--website-dark-grey);
+  font-size: 200px;
+  font-weight: lighter;
 }

@@ -122,10 +122,11 @@ const logicController = (() => {
 
   const checkForWin = (indexOfNewTile) => {
     const rowToCheck = gameboard.getRows()[Math.floor(indexOfNewTile/3)];
-    const colToCheck = indexOfNewTile%3;
-    const testRow = gameboard.getRows()[0];
-    console.log(testRow[0].mark + testRow[1].mark + testRow[2].mark);
-    console.log(rowToCheck.every(verifyThreeInARow));
+    const colToCheck = gameboard.getCols()[indexOfNewTile%3];
+    /* const testRow = gameboard.getRows()[0];
+    console.log(testRow[0].mark + testRow[1].mark + testRow[2].mark); */
+    console.log("row win = "+rowToCheck.every(verifyThreeInARow));
+    console.log('col win = '+colToCheck.every(verifyThreeInARow));
   }
 
   //Used with Array.every() to check for 3 in a row
